@@ -14,8 +14,25 @@ class CreateBlogPostsTable extends Migration
     public function up()
     {
         Schema::create('blog_posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->string('slug')->unique();
+            $table->string('title');
+            $table->text('excerpt')->nullable();
+            $table->text('content_row')->nullable();
+            $table->text('content_html')->nullable();
+
+            $table->boolean('is_published')->default('0');
+            $table->timestamp('published_at')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('blog_categories');
+            $table->index('is_published');
+
         });
     }
 
