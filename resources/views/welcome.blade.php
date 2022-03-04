@@ -62,6 +62,15 @@
                 margin-bottom: 30px;
             }
         </style>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+// fallback script
+  <script>
+    window.jQuery || document.write("{{ asset('js/jquery-3.1.1.min.js') }}");
+  </script>
+
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">

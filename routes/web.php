@@ -11,6 +11,22 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
+    Route::resource('posts','PostController') -> names('blog.posts');
+});
+
+//Route::resource('rest','')
+
+/*
+Auth::routes();
+Route::get('/home','HomeController@index')->name('home');
+//Route::resource('rest','RestTestController'::class)->names('restTest');
+Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
+    Route::resources('posts', 'PostController') ->names('blog.posts');
+});
+*/
